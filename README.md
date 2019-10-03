@@ -29,6 +29,12 @@
 git clone https://github.com/Al-assad/docker-hbase.git
 ```
 
+国内环境可以从 gitee 镜像仓库下载，毕竟 github 小水管不是吹的；
+
+```
+git clone https://gitee.com/assad/docker-hbase.git
+```
+
 <br>
 
 ### 构建镜像
