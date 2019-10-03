@@ -48,8 +48,9 @@ services:
       - ./hadoop.env
 
   hbase:
-    image: bde2020/hbase-standalone:1.0.0-hbase1.2.6
+    image: yulin/hbase-standalone:1.0.1-hbase2.0.5
     container_name: hbase
+    hostname: hbase
     volumes:
       - hbase_data:/hbase-data
       - hbase_zookeeper_data:/zookeeper-data

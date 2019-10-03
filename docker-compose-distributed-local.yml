@@ -56,7 +56,7 @@ services:
       - ./hadoop.env
     ports:
       - 8188:8188
-  
+
   zoo:
     image: zookeeper:3.4.10
     container_name: zoo
@@ -67,7 +67,7 @@ services:
       - 2181:2181
 
   hbase-master:
-    image: bde2020/hbase-master:1.0.0-hbase1.2.6
+    image: yulin/hbase-standalone:1.0.1-hbase2.0.5
     container_name: hbase-master
     hostname: hbase-master
     env_file:
@@ -75,18 +75,20 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 zoo:2181"
     ports:
+      - 16000:16000
       - 16010:16010
 
   hbase-region:
-    image: bde2020/hbase-regionserver:1.0.0-hbase1.2.6
+    image: yulin/hbase-standalone:1.0.1-hbase2.0.5
     container_name: hbase-regionserver
     hostname: hbase-regionserver
     env_file:
       - ./hbase-distributed-local.env
     environment:
-      HBASE_CONF_hbase_regionserver_hostname: hbase-region
+      HBASE_CONF_hbase_regionserver_hostname: hbase-regionserver
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 zoo:2181 hbase-master:16010"
     ports:
+      - 16020:16020
       - 16030:16030
 
 volumes:

@@ -1,15 +1,21 @@
 FROM openjdk:8
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+MAINTAINER yulinying <yulinying_1994@outlook.com>
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends net-tools curl netcat
 
-ENV HBASE_VERSION 1.2.6
-ENV HBASE_URL http://www.apache.org/dist/hbase/$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz
+ENV HBASE_VERSION 2.0.5
+ENV PHOENIX_VERSION 5.0.0
+ENV HBASE_URL http://archive.apache.org/dist/hbase/$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz
+
+COPY asserts/hbase-$HBASE_VERSION.tar.gz /tmp/
+COPY asserts/hadoop-native.tar.gz /tmp/
+COPY asserts/phoenix-$PHOENIX_VERSION.tar.gz /tmp/
+
 RUN set -x \
-    && curl -fSL "$HBASE_URL" -o /tmp/hbase.tar.gz \
-    && curl -fSL "$HBASE_URL.asc" -o /tmp/hbase.tar.gz.asc \
-    && tar -xvf /tmp/hbase.tar.gz -C /opt/ \
-    && rm /tmp/hbase.tar.gz*
+    && tar -xvf /tmp/hbase-$HBASE_VERSION.tar.gz  -C /opt/ \
+    && tar -xvf /tmp/hadoop-native.tar.gz -C /opt/hbase-$HBASE_VERSION/lib/ \
+    && tar -xvf /tmp/phoenix-$PHOENIX_VERSION.tar.gz -C /opt/hbase-$HBASE_VERSION/lib/ \
+    && rm /tmp/**.tar.gz
 
 RUN ln -s /opt/hbase-$HBASE_VERSION/conf /etc/hbase
 RUN mkdir /opt/hbase-$HBASE_VERSION/logs
