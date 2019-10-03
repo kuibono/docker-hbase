@@ -7,15 +7,17 @@ ENV HBASE_VERSION 2.0.5
 ENV PHOENIX_VERSION 5.0.0
 ENV HBASE_URL http://archive.apache.org/dist/hbase/$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz
 
-COPY asserts/hbase-$HBASE_VERSION.tar.gz /tmp/
+COPY asserts/hbase-$HBASE_VERSION.tar.gz.aa /tmp/
+COPY asserts/hbase-$HBASE_VERSION.tar.gz.ab /tmp/
+COPY asserts/hbase-$HBASE_VERSION.tar.gz.ac /tmp/
 COPY asserts/hadoop-native.tar.gz /tmp/
 COPY asserts/phoenix-$PHOENIX_VERSION.tar.gz /tmp/
 
 RUN set -x \
-    && tar -xvf /tmp/hbase-$HBASE_VERSION.tar.gz  -C /opt/ \
+    && cat /tmp/hbase-$HBASE_VERSION.tar.gz.a* | tar -zx -C /opt/ \
     && tar -xvf /tmp/hadoop-native.tar.gz -C /opt/hbase-$HBASE_VERSION/lib/ \
     && tar -xvf /tmp/phoenix-$PHOENIX_VERSION.tar.gz -C /opt/hbase-$HBASE_VERSION/lib/ \
-    && rm /tmp/**.tar.gz
+    && rm /tmp/**.tar.gz.*
 
 RUN ln -s /opt/hbase-$HBASE_VERSION/conf /etc/hbase
 RUN mkdir /opt/hbase-$HBASE_VERSION/logs
