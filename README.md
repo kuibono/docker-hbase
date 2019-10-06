@@ -23,7 +23,7 @@
 
 ### 下载仓库
 
-仓库中包含完整的 `hbase-2.0.5-bin.tar.gz` 二进制包和 `phoenix-5.0.0-hbase-2.0.tar.gz` 中的 `phoenix-5.0.0-server.jar` ，仓库体积比较大，这也是无奈，毕竟在国内从 apache 历史仓库下载 hbase 历史版本的体验简直就是噩梦。
+仓库中包含完整的 `hbase-2.0.0-bin.tar.gz` 二进制包和 `phoenix-5.0.0-hbase-2.0.tar.gz` 中的 `phoenix-5.0.0-server.jar` ，仓库体积比较大，这也是无奈，毕竟在国内从 apache 历史仓库下载 hbase 历史版本的体验简直就是噩梦。
 
 ```
 git clone https://github.com/Al-assad/docker-hbase.git
