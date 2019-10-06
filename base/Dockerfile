@@ -3,7 +3,7 @@ MAINTAINER yulinying <yulinying_1994@outlook.com>
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends net-tools curl netcat
 
-ENV HBASE_VERSION 2.0.5
+ENV HBASE_VERSION 2.0.0
 ENV PHOENIX_VERSION 5.0.0
 ENV HBASE_URL http://archive.apache.org/dist/hbase/$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz
 

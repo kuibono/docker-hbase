@@ -8,13 +8,13 @@
 
 ## 项目简介
 
-基于  [**big-data-europe**](https://github.com/big-data-europe/docker-hbase)  的仓库代码修改，主要升级了 HBase 版本到 2.0.5， 增加 Phoenix 的配置，增加 HBase 对 Hadoop 共享库的配置，同时修改 HBase 组件由 http 下载为本地二进制包拷贝（天朝的墙....），减少构建过程中键盘被砸坏的风险。
+基于  [**big-data-europe**](https://github.com/big-data-europe/docker-hbase)  的仓库代码修改，主要升级了 HBase 版本到 2.X， 增加 Phoenix 的配置，增加 HBase 对 Hadoop 共享库的配置，同时修改 HBase 组件由 http 下载为本地二进制包拷贝（天朝的墙....），减少构建过程中键盘被砸坏的风险。
 
 主要组件版本如下：
 
 * Hadoop-2.7.4
 * Zookeeper-3.4.10
-* HBase-2.0.5
+* HBase-2.0.0
 * Phoenix-5.0.0
 
 <br/>

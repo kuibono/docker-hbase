@@ -1,6 +1,6 @@
 DOCKER_NETWORK = hbase
 ENV_FILE = hadoop.env
-current_branch := 1.0.1-hbase2.0.5
+current_branch := 1.0.1-hbase2.0.0
 hadoop_branch := 2.0.0-hadoop3.1.1-java8
 build:
 	docker build -t yulin/hbase-base:$(current_branch) ./base
