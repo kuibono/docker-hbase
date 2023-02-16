@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    image: kuibono/hadoop-namenode:2.0.0-hadoop2.7.4-java8
     container_name: namenode
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
@@ -12,7 +12,7 @@ services:
       - ./hadoop.env
 
   datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    image: kuibono/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     container_name: datanode
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
@@ -22,7 +22,7 @@ services:
       - ./hadoop.env
 
   resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop2.7.4-java8
+    image: kuibono/hadoop-resourcemanager:2.0.0-hadoop2.7.4-java8
     container_name: resourcemanager
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
@@ -30,7 +30,7 @@ services:
       - ./hadoop.env
 
   nodemanager1:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop2.7.4-java8
+    image: kuibono/hadoop-nodemanager:2.0.0-hadoop2.7.4-java8
     container_name: nodemanager
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
@@ -38,7 +38,7 @@ services:
       - ./hadoop.env
 
   historyserver:
-    image: bde2020/hadoop-historyserver:2.0.0-hadoop2.7.4-java8
+    image: kuibono/hadoop-historyserver:2.0.0-hadoop2.7.4-java8
     container_name: historyserver
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
@@ -48,7 +48,7 @@ services:
       - ./hadoop.env
 
   hbase:
-    image: yulin/hbase-standalone:1.0.1-hbase2.0.0
+    image: kuibono/hbase-standalone:1.0.1-hbase2.0.0
     container_name: hbase
     hostname: hbase
     volumes:
